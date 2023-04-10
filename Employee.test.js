@@ -1,40 +1,34 @@
-// using Employee constructor 
-const Employee = require('../lib/Employee');
+ const Employ = require('../lib/Employ');
+ 
+test('creates an employ object', () => {
+    const employ = new Employ('Issa', 90, 'Issa.chamblee@gmail.com);
 
-// creates employee object 
-test('creates an employee object', () => {
-    const employee = new Employee('Nicole', 90, 'nicole.elisaw@gmail.com');
+    expect(employ.name).toEqual(expect.any(String));
+    expect(employ.id).toEqual(expect.any(Number));
+    expect(employ.email).toEqual(expect.any(String));
+});
+ 
+test('gets employ name', () => {
+    const employ = new Employ('Issa', 90, 'Issa.chamblee@gmail.com');
 
-    expect(employee.name).toEqual(expect.any(String));
-    expect(employee.id).toEqual(expect.any(Number));
-    expect(employee.email).toEqual(expect.any(String));
+    expect(employ.getName()).toEqual(expect.any(String));
+});
+ 
+test('gets employ ID', () => {
+    const employ = new Employ('Issa', 90, 'Issa.chamblee@gmail.com');
+
+    expect(employ.getId()).toEqual(expect.any(Number));
 });
 
-// gets id from getId() 
-test('gets employee name', () => {
-    const employee = new Employee('Nicole', 90, 'nicole.elisaw@gmail.com');
+test('gets employ email', () => {
+    const employ = new Employ('Issa', 90, 'Issa.chamblee@gmail.com');
 
-    expect(employee.getName()).toEqual(expect.any(String));
+    expect(employ.getEmail()).toEqual(expect.stringContaining(employ.email.toString()));
 });
 
-// gets id from getId() 
-test('gets employee ID', () => {
-    const employee = new Employee('Nicole', 90, 'nicole.elisaw@gmail.com');
+test('gets role of employ', () => {
+    const employ = new Employ('Issa', 90, 'Issa.chamblee@gmail.com');
 
-    expect(employee.getId()).toEqual(expect.any(Number));
-});
-
-// gets emails from getEmail()
-test('gets employee email', () => {
-    const employee = new Employee('Nicole', 90, 'nicole.elisaw@gmail.com');
-
-    expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()));
-});
-
-// gets role from getRole()
-test('gets role of employee', () => {
-    const employee = new Employee('Nicole', 90, 'nicole.elisaw@gmail.com');
-
-    expect(employee.getRole()).toEqual("Employee");
+    expect(employ.getRole()).toEqual("Employ");
 }); 
 
