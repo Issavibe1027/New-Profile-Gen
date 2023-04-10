@@ -1,5 +1,5 @@
  
-class Employee {
+class Employ {
     constructor (name, id, email) {
         this.name = name;
         this.id = id;
@@ -22,9 +22,9 @@ class Employee {
 
     
     getRole () {
-        return 'Employee'; 
+        return 'Employ'; 
     }
 };
 
  
-module.exports = Employee; 
+module.exports = Employ; 
