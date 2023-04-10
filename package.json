@@ -11,14 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicolewallace09/team-profile-generator.git"
+    "url": "https://issavibe1027.github.io/New-Profile-Gen/
   },
-  "author": "Nicole Wallace",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nicolewallace09/team-profile-generator/issues"
-  },
-  "homepage": "https://github.com/nicolewallace09/team-profile-generator#readme",
+}
+  "homepage": "https://issavibe1027.github.io/New-Profile-Gen/#readme",
   "devDependencies": {
     "jest": "^26.0.1"
   },
