@@ -9,10 +9,8 @@
   "scripts": {
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://issavibe1027.github.io/New-Profile-Gen/.git
-  },
+  
+ 
 }
   "homepage": "https://issavibe1027.github.io/New-Profile-Gen/#readme",
   "devDependencies": {
