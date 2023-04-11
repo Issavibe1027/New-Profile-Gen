@@ -2,9 +2,9 @@
 const generateHTML = require('./src/generateHTML');
 
 
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern'); 
+const Manage = require('./lib/Manage');
+const Engine = require('./lib/Engine');
+const Int = require('./lib/Int'); 
 
  
 const fs = require('fs'); 
@@ -70,16 +70,16 @@ const addManager = () => {
             }
         }
     ])
-    .then(managerInput => {
-        const  { name, id, email, officeNumber } = managerInput; 
-        const manager = new Manager (name, id, email, officeNumber);
+    .then(manageInput => {
+        const  { name, id, email, officeNumber } = manageInput; 
+        const manage = new Manage (name, id, email, officeNumber);
 
-        teamArray.push(manager); 
-        console.log(manager); 
+        teamArray.push(manage); 
+        console.log(manage); 
     })
 };
 
-const addEmployee = () => {
+const addEmploy = () => {
     console.log(`
     =================
     Adding employees to the team
@@ -90,7 +90,7 @@ const addEmployee = () => {
         {
             type: 'list',
             name: 'role',
-            message: "Please choose your employee's role",
+            message: "Select role for employee",
             choices: ['Engineer', 'Intern']
         },
         {
@@ -122,13 +122,13 @@ const addEmployee = () => {
         {
             type: 'input',
             name: 'email',
-            message: "Please enter the employee's email.",
+            message: "Enter the employees email.",
             validate: email => {
                 valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
                 if (valid) {
                     return true;
                 } else {
-                    console.log ('Please enter an email!')
+                    console.log ('You need an email!')
                     return false; 
                 }
             }
@@ -136,57 +136,57 @@ const addEmployee = () => {
         {
             type: 'input',
             name: 'github',
-            message: "Please enter the employee's github username.",
-            when: (input) => input.role === "Engineer",
+            message: "Provide the employee's github user.",
+            when: (input) => input.role === "Engine",
             validate: nameInput => {
                 if (nameInput ) {
                     return true;
                 } else {
-                    console.log ("Please enter the employee's github username!")
+                    console.log ("Provide the employee's github user!")
                 }
             }
         },
         {
             type: 'input',
             name: 'school',
-            message: "Please enter the intern's school",
-            when: (input) => input.role === "Intern",
+            message: "Submit the intern's school",
+            when: (input) => input.role === "Int",
             validate: nameInput => {
                 if (nameInput) {
                     return true;
                 } else {
-                    console.log ("Please enter the intern's school!")
+                    console.log ("You didn't provide the intern's school!")
                 }
             }
         },
         {
             type: 'confirm',
-            name: 'confirmAddEmployee',
-            message: 'Would you like to add more team members?',
+            name: 'confirmAddEmploy',
+            message: 'Add more team members?',
             default: false
         }
     ])
     .then(employeeData => {
         
 
-        let { name, id, email, role, github, school, confirmAddEmployee } = employeeData; 
-        let employee; 
+        let { name, id, email, role, github, school, confirmAddEmployee } = employData; 
+        let employ; 
 
         if (role === "Engineer") {
-            employee = new Engineer (name, id, email, github);
+            employ = new Engine (name, id, email, github);
 
-            console.log(employee);
+            console.log(employ);
 
         } else if (role === "Intern") {
-            employee = new Intern (name, id, email, school);
+            employ = new Int (name, id, email, school);
 
-            console.log(employee);
+            console.log(employ);
         }
 
-        teamArray.push(employee); 
+        teamArray.push(employ); 
 
-        if (confirmAddEmployee) {
-            return addEmployee(teamArray); 
+        if (confirmAddEmploy) {
+            return addEmploy(teamArray); 
         } else {
             return teamArray;
         }
@@ -209,8 +209,8 @@ const writeFile = data => {
     })
 }; 
 
-addManager()
-  .then(addEmployee)
+addManage()
+  .then(addEmploy)
   .then(teamArray => {
     return generateHTML(teamArray);
   })
